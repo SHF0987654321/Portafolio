@@ -14,7 +14,6 @@ function App() {
   const [repo, setRepo] = useState(null);
 
   useEffect(() => {
-    // Fetch al repositorio del Parqueadero
     fetch('https://api.github.com/repos/SHF0987654321/Parqueadero')
       .then(res => res.json())
       .then(data => setRepo(data))
@@ -28,7 +27,12 @@ function App() {
         {/* Perfil Principal */}
         <div className="profile-header">
           <div className="avatar-container">
-            <img src="/Avatar.jpeg" alt="Avatar Sebastian" className="avatar-image" />
+            {/* CORRECCIÓN: Ruta dinámica para GitHub Pages */}
+            <img 
+              src={process.env.PUBLIC_URL + '/Avatar.jpeg'} 
+              alt="Avatar Sebastian" 
+              className="avatar-image" 
+            />
           </div>
           <h1>Sebastian Hurtado</h1>
           <p className="university-tag">Estudiante de Ingeniería de Sistemas | Universidad del Pacífico</p>
@@ -70,7 +74,12 @@ function App() {
         <div className="project-highlight">
           <h3>Proyecto Destacado</h3>
           <div className="project-card">
-            <img src="/dashboard_cliente.png" alt="Snapshot Parqueadero" className="project-image" /> 
+            {/* CORRECCIÓN: Ruta dinámica para la captura del proyecto */}
+            <img 
+              src={process.env.PUBLIC_URL + '/dashboard_cliente.png'} 
+              alt="Snapshot Parqueadero" 
+              className="project-image" 
+            /> 
             <div className="project-details">
               <h2>{repo ? repo.name : 'Parqueadero'}</h2>
               <p>{repo ? repo.description : 'Cargando datos del proyecto...'}</p>
